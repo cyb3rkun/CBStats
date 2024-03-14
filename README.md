@@ -30,7 +30,7 @@ This project uses [GitHub stats](https://github.com/jstrieb/github-stats) by [Ja
 Since the project runs on Forgejo / Gitea Actions, no server is required to regularly regenerate the images with updated statistics. Likewise, since the user runs the analysis code themselves via Forgejo / Gitea Actions, they can use their access token to collect statistics on private repositories that an external service would be unable to access.
 
 ## Installation
-
+### Using the CI
 <!-- TODO: Add details and screenshots -->
 
 1. Create a personal access token using the instructions [here](https://docs.codeberg.org/advanced/access-token/). Personal access token must have permissions: `Read - repository` and `Read - user`. Copy the access token when it is generated – if you lose it, you will have to
@@ -87,6 +87,8 @@ Since the project runs on Forgejo / Gitea Actions, no server is required to regu
    statistics images.
 10. Star this repo if you like it!
 
+### Running yourself
+     python3 main.py
 
 # Support the Project
 
