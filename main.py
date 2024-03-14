@@ -53,7 +53,7 @@ class Queries(object):
         """
         Make a request to the Forgejo / Gitea API using the authentication token from
         the environment
-        :param generated_query: string query to be sent to the API
+        :param query: string query to be sent to the API
         :return: JSON output
         """
         headers = {
@@ -103,7 +103,7 @@ class Stats(object):
 
     def get_stats(self) -> None:
         """
-        Get lots of summary statistics
+        Get lots of summary statistics. This is the main program for getting statistics.
         """
 
         self.name()
@@ -132,6 +132,7 @@ class Stats(object):
         """
         :return: Forgejo / Gitea user's name (e.g., Tuxilio)
         """
+        
         if self._name is not None:
             return self._name
 
@@ -148,6 +149,7 @@ class Stats(object):
         """
         :return: Forgejo / Gitea repo list (e.g., [repo1, repo2])
         """
+        
         if self._repo_list is not None:
             return self._repo_list
 
@@ -164,6 +166,7 @@ class Stats(object):
         """
         :return: Forgejo / Gitea total stargazers (e.g., 24)
         """
+        
         if self._stargazers is not None:
             return self._stargazers
 
@@ -181,6 +184,7 @@ class Stats(object):
         """
         :return: Forgejo / Gitea total forks (e.g., 12)
         """
+        
         if self._forks is not None:
             return self._forks
 
@@ -199,6 +203,7 @@ class Stats(object):
         :return: Forgejo / Gitea total lines changed (e.g., 35011)
         :return: Forgejo / Gitea total contributions (e.g., 514)
         """
+        
         if self._lines_changed is not None and self._total_contributions is not None:
             return self._lines_changed, self._total_contributions
 
@@ -216,8 +221,9 @@ class Stats(object):
 
     def languages(self) -> str:
         """
-        :return: Most used languages (e.g., 35011)
+        :return: Most used languages (e.g., ["Py"thon":20, "Java":80])
         """
+        
         if self._languages is not None:
             return self._languages
 
@@ -239,6 +245,9 @@ class Stats(object):
         return self._languages
 
 class Generate(object):
+  """
+  Class for generating images from data generated in stats
+  """
     def __init__(
         self,
         stats,
@@ -252,14 +261,15 @@ class Generate(object):
         """
         Create the output folder if it does not already exist
         """
+        
         if not os.path.isdir("generated"):
             os.mkdir("generated")
 
     def generate_overview(self) -> None:
         """
         Generate an SVG badge with summary statistics
-        :param s: Represents user's GitHub statistics
         """
+        
         with open("templates/overview.svg", "r") as f:
             output = f.read()
 
@@ -283,14 +293,13 @@ class Generate(object):
     def generate_languages(self) -> None:
         """
         Generate an SVG badge with summary languages used
-        :param s: Represents user's GitHub statistics
         """
+        
         with open("templates/languages.svg", "r") as f:
             output = f.read()
 
         with open('colors.json') as d:
             color_data = json.load(d)
-
 
         progress = ""
         lang_list = ""
@@ -340,13 +349,14 @@ def main() -> None:
     """
     Used mostly for testing; this module is not usually run standalone
     """
+    
     access_token = "TOKEN"
     user = "tuxilio"
     git_url = "https://codeberg.org"
 
     if access_token is None or user is None:
         raise RuntimeError(
-            "ACCESS_TOKEN and GITHUB_ACTOR environment variables cannot be None!"
+            "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
         )
 
     stats = Stats(user, access_token, git_url)

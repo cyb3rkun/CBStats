@@ -11,9 +11,9 @@ https://github.community/t/support-theme-context-for-images-in-light-vs-dark-mod
 <img src="generated/languages.svg#gh-light-mode-only"/>
 </a>
 
-Generate visualizations of Forgejo / Gitea user and repository statistics with Forgejo / Gitea Actions. Visualizations can include data for private repositories.
+Generate visualizations of Forgejo / Gitea user and repository statistics with Python - e.g. using Forgejo / Gitea Actions. Visualizations can include data for private repositories.
 
-You can choose between like and dark mode.
+You can choose between light and dark mode.
 
 ## Background
 
@@ -82,12 +82,19 @@ Since the project runs on Forgejo / Gitea Actions, no server is required to regu
    ```md
    ![](https://raw.githubusercontent.com/username/github-stats/master/generated/languages.svg#gh-dark-mode-only)
    ![](https://raw.githubusercontent.com/username/github-stats/master/generated/languages.svg#gh-light-mode-only)
-   ```-->
+   ```
+   -->
 9. Link back to this repository so that others can generate their own
    statistics images.
 10. Star this repo if you like it!
 
 ### Running yourself
+First, install requests:
+
+     pip install requirements.txt
+
+Now you can run the main program:
+
      python3 main.py
 
 # Support the Project
