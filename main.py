@@ -231,9 +231,9 @@ class Stats(object):
         return self._languages
 
 class Generate(object):
-  """
-  Class for generating images from data generated in stats
-  """
+    """
+    Class for generating images from data generated in stats
+    """
     def __init__(self, stats, exclude_repos: Optional[Set] = None, exclude_langs: Optional[Set] = None, ignore_forked_repos: bool = False):
         self.stats = stats
 
