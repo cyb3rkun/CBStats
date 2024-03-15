@@ -1,11 +1,10 @@
 steps:
-  - name: build
+  - name: generate
     image: debian
+    secrets: [ access_token, user, git_url ]
+    environment:
+      ACCESS_TOKEN=${ACCESS_TOKEN}
+      USER=${USER}
+      GIT_URL=${GIT_URL}
     commands:
-      - echo "This is the build step"
-      - echo ${TEST}
-    secrets: [ test ]
-  - name: a-test-step
-    image: debian
-    commands:
-      - echo "Testing.."
+      - python3 main.py
