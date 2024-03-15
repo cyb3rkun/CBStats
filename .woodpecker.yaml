@@ -18,3 +18,5 @@ steps:
       remote_name: origin
       branch: main
       local_ref: main
+    commands:
+    - git config --global user.name "[CI] Update stats"
