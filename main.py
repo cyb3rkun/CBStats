@@ -38,13 +38,7 @@ class Queries(object):
     Class with functions to query the Forgejo / Gitea API.
     """
 
-    def __init__(
-        self,
-        username: str,
-        access_token: str,
-        git_url: str,
-        max_connections: int = 10,
-    ):
+    def __init__(self, username: str, access_token: str, git_url: str):
         self.username = username
         self.access_token = access_token
         self.git_url = git_url
@@ -75,15 +69,7 @@ class Stats(object):
     Retrieve and store statistics about Forgejo / Gitea usage.
     """
 
-    def __init__(
-        self,
-        username: str,
-        access_token: str,
-        git_url: str,
-        exclude_repos: Optional[Set] = None,
-        exclude_langs: Optional[Set] = None,
-        ignore_forked_repos: bool = False,
-    ):
+    def __init__(self, username: str, access_token: str, git_url: str, exclude_repos: Optional[Set] = None, exclude_langs: Optional[Set] = None, ignore_forked_repos: bool = False):
         self.username = username
         self.git_url = git_url
         self._ignore_forked_repos = ignore_forked_repos
@@ -248,13 +234,7 @@ class Generate(object):
   """
   Class for generating images from data generated in stats
   """
-    def __init__(
-        self,
-        stats,
-        exclude_repos: Optional[Set] = None,
-        exclude_langs: Optional[Set] = None,
-        ignore_forked_repos: bool = False,
-    ):
+    def __init__(self, stats, exclude_repos: Optional[Set] = None, exclude_langs: Optional[Set] = None, ignore_forked_repos: bool = False):
         self.stats = stats
 
     def generate_output_folder(self) -> None:
@@ -347,7 +327,7 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
 
 def main() -> None:
     """
-    Used mostly for testing; this module is not usually run standalone
+    Main program
     """
     
     access_token = "TOKEN"
