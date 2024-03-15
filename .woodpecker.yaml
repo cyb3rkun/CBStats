@@ -3,8 +3,8 @@ steps:
     image: debian
     secrets: [ access_token, user, git_url ]
     environment:
-      ACCESS_TOKEN=${ACCESS_TOKEN}
-      USER=${USER}
-      GIT_URL=${GIT_URL}
+      - ACCESS_TOKEN=${ACCESS_TOKEN}
+      - USER=${USER}
+      - GIT_URL=${GIT_URL}
     commands:
       - python3 main.py
