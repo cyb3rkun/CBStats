@@ -1,6 +1,6 @@
 steps:
   - name: generate
-    image: debian
+    image: alpine
     secrets: [ access_token, user, git_url ]
     environment:
       - ACCESS_TOKEN=${ACCESS_TOKEN}
