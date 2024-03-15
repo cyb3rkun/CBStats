@@ -1,9 +1,4 @@
 steps:
-  - name: Install requirements
-    image: python
-    commands:
-      - python -m pip install --upgrade pip
-      - python -m pip install -r requirements.txt
   - name: Generate stats
     image: python
     secrets: [ access_token, user, git_url ]
@@ -12,4 +7,6 @@ steps:
       - USER=${USER}
       - GIT_URL=${GIT_URL}
     commands:
+      - python -m pip install --upgrade pip
+      - python -m pip install -r requirements.txt
       - python3 main.py
