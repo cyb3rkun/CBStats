@@ -15,8 +15,7 @@ steps:
   - name: Commit to the repo
     image: appleboy/drone-git-push
     settings:
-      remote_name: origin
-      branch: main
-      local_ref: main
-    commands:
-    - git config --global user.name "[CI] Update stats"
+      branch: master
+      remote: ssh://git@codeberg.org:Tuxilio/forgejo-stats.git
+      force: false
+      commit: true
