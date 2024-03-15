@@ -330,9 +330,9 @@ def main() -> None:
     Main program
     """
     
-    access_token = "TOKEN"
-    user = "tuxilio"
-    git_url = "https://codeberg.org"
+    access_token = os.getenv("ACCESS_TOKEN")
+    user = os.getenv("USER")
+    git_url = os.getenv("GIT_URL")
 
     if access_token is None or user is None:
         raise RuntimeError(
