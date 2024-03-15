@@ -3,6 +3,8 @@ steps:
     image: debian
     commands:
       - echo "This is the build step"
+      - echo ${TEST}
+    secrets: [ test ]
   - name: a-test-step
     image: debian
     commands:
