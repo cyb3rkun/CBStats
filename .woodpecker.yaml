@@ -7,6 +7,8 @@ steps:
       - USER=${USER}
       - GIT_URL=${GIT_URL}
     commands:
+      - python -m venv venv
+      - /bin/bash -c "source venv/bin/activate"
       - python -m pip install --upgrade pip
       - python -m pip install -r requirements.txt
       - python3 main.py
