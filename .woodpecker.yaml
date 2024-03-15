@@ -1,5 +1,10 @@
 steps:
-  - name: generate
+  - name: Install requirements
+    image: python
+    commands:
+      - python -m pip install --upgrade pip
+      - python -m pip install -r requirements.txt
+  - name: Generate stats
     image: python
     secrets: [ access_token, user, git_url ]
     environment:
