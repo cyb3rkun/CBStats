@@ -395,3 +395,5 @@ if __name__ == "__main__":
     print("Name = __main__")
     main("Tuxilio")
     main("Pinguin")
+
+print("-- test --")
