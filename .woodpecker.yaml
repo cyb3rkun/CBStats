@@ -23,4 +23,4 @@ steps:
       - git remote add origin "https://"$${COMMIT_TOKEN}"@codeberg.org/Tuxilio/forgejo-stats.git"
       - git add .
       - git commit -m "[SKIP CI] Update stats ($( env TZ=Europe/Berlin date +"%d.%m.%Y" ))"
-      - git push
+      - git push --set-upstream origin main
