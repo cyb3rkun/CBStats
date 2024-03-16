@@ -378,11 +378,7 @@ def main() -> None:
     #user = os.getenv("USER")
     git_url = os.getenv("GIT_URL")
 
-    with open("users.json", "r") as f:
-        user_data = json.load(f)
-        users = user_data['users']
-
-    print("Loaded JSON")
+    users = ["Tuxilio", "Pinguin"]
 
     for user in users:
         if access_token is None or user is None:
