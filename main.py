@@ -273,6 +273,9 @@ class Generate(object):
         if not os.path.isdir("generated"):
             os.mkdir("generated")
 
+        if not os.path.isdir("generated/" + self.stats.user):
+            os.mkdir("generated/" + self.stats.user)
+
     def generate_overview(self) -> None:
         """
         Generate an SVG badge with summary statistics
@@ -294,7 +297,7 @@ class Generate(object):
         output = re.sub("{{ repos }}", f"{repos_len:,}", output)"""
 
         self.generate_output_folder()
-        with open("generated/overview.svg", "w") as f:
+        with open("generated/" + self.stats.user + "/overview.svg", "w") as f:
             f.write(output)
 
 
@@ -345,7 +348,7 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
         output = re.sub(r"{{ lang_list }}", lang_list, output)
 
         self.generate_output_folder()
-        with open("generated/languages.svg", "w") as f:
+        with open("generated/" + self.stats.user + "/languages.svg", "w") as f:
             f.write(output)
 
 ###############################################################################
@@ -359,20 +362,25 @@ def main() -> None:
     """
     
     access_token = os.getenv("ACCESS_TOKEN")
-    user = os.getenv("USER")
+    #user = os.getenv("USER")
     git_url = os.getenv("GIT_URL")
 
-    if access_token is None or user is None:
-        raise RuntimeError(
-            "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
-        )
+    with open("users.json", "r") as f:
+        user_data = json.load(f)
+        users = user_data['users']
 
-    stats = Stats(user, access_token, git_url)
-    stats.get_stats()
+    for user in users:
+        if access_token is None or user is None:
+            raise RuntimeError(
+                "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
+            )
 
-    generate = Generate(stats)
-    generate.generate_overview()
-    generate.generate_languages()
+        stats = Stats(user, access_token, git_url)
+        stats.get_stats()
+
+        generate = Generate(stats)
+        generate.generate_overview()
+        generate.generate_languages()
 
 if __name__ == "__main__":
     main()
