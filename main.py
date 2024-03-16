@@ -382,11 +382,15 @@ def main() -> None:
         user_data = json.load(f)
         users = user_data['users']
 
+    print("Loaded JSON")
+
     for user in users:
         if access_token is None or user is None:
             raise RuntimeError(
                 "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
             )
+
+        print("Generating")
 
         stats = Stats(user, access_token, git_url)
         stats.get_stats()
