@@ -86,6 +86,7 @@ class Stats(object):
         self._repo_list: Optional[Set[str]] = None
         self._lines_changed: Optional[Tuple[int, int]] = None
         self._views: Optional[int] = None
+        self._streak: Optional[int] = None
 
     def get_stats(self) -> None:
         """
@@ -98,6 +99,7 @@ class Stats(object):
         self.forks()
         self.contributions()
         self.languages()
+        self.streak()
 
         print_data = [
             ["User:", self._name],
@@ -106,7 +108,8 @@ class Stats(object):
             ["Forks:", self._forks],
             ["Lines changed:", self._lines_changed],
             ["Contributions:", self._total_contributions],
-            ["Languages:", self._languages]
+            ["Languages:", self._languages],
+            ["Strak:", self._streak]
         ]
 
         max_len = max(len(row[0]) for row in print_data)
@@ -229,6 +232,31 @@ class Stats(object):
         self._languages = {language: round(bytes / total_bytes * 100, 2) for language, bytes in language_data.items()}
 
         return self._languages
+
+    def streak(self):
+        """
+        :return: Streak length
+        """
+        if self._streak is not None:
+            return self._streak
+
+        self._streak = 0
+        last_timestamp = None
+
+        response = self.queries.query("/users/" + self.username + "/heatmap")
+
+        for day in response:
+            if last_timestamp is not None:
+                if day['timestamp'] - last_timestamp > 900:
+                    self._streak = 0
+            if day['contributions'] > 0:
+                self._streak += 1
+            else:
+                break
+
+            last_timestamp = day['timestamp']
+
+        return self._streak
 
 class Generate(object):
     """
