@@ -368,8 +368,7 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
 # Main Function
 ###############################################################################
 
-
-def main() -> None:
+def main(user) -> None:
     """
     Main program
     """
@@ -378,22 +377,18 @@ def main() -> None:
     #user = os.getenv("USER")
     git_url = os.getenv("GIT_URL")
 
-    users = ["Tuxilio", "Pinguin"]
+    if access_token is None or user is None:
+        raise RuntimeError(
+            "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
+        )
 
-    for user in users:
-        if access_token is None or user is None:
-            raise RuntimeError(
-                "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
-            )
+    stats = Stats(user, access_token, git_url)
+    stats.get_stats()
 
-        print("Generating")
-
-        stats = Stats(user, access_token, git_url)
-        stats.get_stats()
-
-        generate = Generate(stats)
-        generate.generate_overview()
-        generate.generate_languages()
+    generate = Generate(stats)
+    generate.generate_overview()
+    generate.generate_languages()
 
 if __name__ == "__main__":
-    main()
+    main("Tuxilio")
+    main("Pinguin")
