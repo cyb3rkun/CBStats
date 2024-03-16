@@ -6,6 +6,9 @@ steps:
       - ACCESS_TOKEN=${ACCESS_TOKEN}
       - USER=${USER}
       - GIT_URL=${GIT_URL}
+    when:
+      - event: manual
+      - event: cron
     commands:
       - python -m venv venv
       - /bin/bash -c "source venv/bin/activate"
@@ -15,6 +18,9 @@ steps:
   - name: Commit to the repo
     image: alpine
     secrets: [ commit_token ]
+    when:
+      - event: manual
+      - event: cron
     commands:
       - apk add git
       - git config --global user.name "[CI] Stats generator"
