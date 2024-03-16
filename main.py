@@ -92,13 +92,26 @@ class Stats(object):
         """
         Get lots of summary statistics. This is the main program for getting statistics.
         """
-
+        
+        print("Name")
         self.name()
+
+        print("Repo list")
         self.repo_list()
+
+        print("Stargazers")
         self.stargazers()
+
+        print("Forks")
         self.forks()
+
+        print("Contributions")
         self.contributions()
+
+        print("Languages")
         self.languages()
+
+        print("Streak")
         self.streak()
 
         print_data = [
