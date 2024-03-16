@@ -273,8 +273,8 @@ class Generate(object):
         if not os.path.isdir("generated"):
             os.mkdir("generated")
 
-        if not os.path.isdir("generated/" + self.stats.user):
-            os.mkdir("generated/" + self.stats.user)
+        if not os.path.isdir("generated/" + self.stats.username):
+            os.mkdir("generated/" + self.stats.username)
 
     def generate_overview(self) -> None:
         """
@@ -297,7 +297,7 @@ class Generate(object):
         output = re.sub("{{ repos }}", f"{repos_len:,}", output)"""
 
         self.generate_output_folder()
-        with open("generated/" + self.stats.user + "/overview.svg", "w") as f:
+        with open("generated/" + self.stats.username + "/overview.svg", "w") as f:
             f.write(output)
 
 
@@ -348,7 +348,7 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
         output = re.sub(r"{{ lang_list }}", lang_list, output)
 
         self.generate_output_folder()
-        with open("generated/" + self.stats.user + "/languages.svg", "w") as f:
+        with open("generated/" + self.stats.username + "/languages.svg", "w") as f:
             f.write(output)
 
 ###############################################################################
