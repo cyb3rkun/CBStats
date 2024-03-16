@@ -372,6 +372,8 @@ def main(user) -> None:
     """
     Main program
     """
+
+    print("Main")
     
     access_token = os.getenv("ACCESS_TOKEN")
     #user = os.getenv("USER")
@@ -390,5 +392,6 @@ def main(user) -> None:
     generate.generate_languages()
 
 if __name__ == "__main__":
+    print("Name = __main__")
     main("Tuxilio")
     main("Pinguin")
