@@ -11,6 +11,11 @@ https://github.community/t/support-theme-context-for-images-in-light-vs-dark-mod
 <img src="generated/languages.svg#gh-light-mode-only"/>
 </a>
 
+[![status-badge](https://ci.codeberg.org/api/badges/13152/status.svg)](https://ci.codeberg.org/repos/13152)
+[![license badge](https://img.shields.io/badge/License-GPL_v3-blue)](LICENSE)
+[![Stars](https://img.shields.io/gitea/stars/Tuxilio/forgejo-stats?gitea_url=https%3A%2F%2Fcodeberg.org%2F)](https://codeberg.org/Tuxilio/forgejo-stats/stars)
+[![Issues](https://img.shields.io/gitea/issues/open/Tuxilio/forgejo-stats?gitea_url=https%3A%2F%2Fcodeberg.org%2F)](https://codeberg.org/Tuxilio/forgejo-stats/issues)
+
 Generate visualizations of Forgejo / Gitea user and repository statistics with Python - e.g. using Forgejo / Gitea Actions. Visualizations can include data for private repositories.
 
 You can choose between light and dark mode.
