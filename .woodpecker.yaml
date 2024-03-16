@@ -13,9 +13,11 @@ steps:
       - python -m pip install -r requirements.txt
       - python3 main.py
   - name: Commit to the repo
-    image: appleboy/drone-git-push
-    settings:
-      branch: master
-      remote: ssh://git@codeberg.org:Tuxilio/forgejo-stats.git
-      force: false
-      commit: true
+    image: debian
+    commands:
+      - apt install git
+      - git config --global user.name "[CI] Stats generator"
+      - git config --global user.email "tuxilio@noreply.codeberg.org"
+      - git add .
+      - git commit -m "[SKIP CI] Update stats ($( env TZ=Europe/Berlin date +"%d.%m.%Y" ))"
+      - git push
