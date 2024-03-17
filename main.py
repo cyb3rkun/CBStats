@@ -355,12 +355,13 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
 ###############################################################################
 
 
-def main(user) -> None:
+def main() -> None:
     """
     Main program
     """
     
     access_token = os.getenv("ACCESS_TOKEN")
+    user = os.getenv("USER")
     git_url = os.getenv("GIT_URL")
 
     print("Generating stats for user " + user)
@@ -377,5 +378,4 @@ def main(user) -> None:
     generate.generate_languages()
 
 if __name__ == "__main__":
-    main("Tuxilio")
-    #main("Pinguin")
+    main()
