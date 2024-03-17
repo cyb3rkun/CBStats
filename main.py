@@ -378,3 +378,4 @@ def main(user) -> None:
 
 if __name__ == "__main__":
     main("Tuxilio")
+    main("Pinguin")
