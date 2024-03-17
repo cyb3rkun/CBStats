@@ -86,6 +86,7 @@ class Stats(object):
         self._repo_list: Optional[Set[str]] = None
         self._lines_changed: Optional[Tuple[int, int]] = None
         self._views: Optional[int] = None
+        self._streak: Optional[int] = None
 
     def get_stats(self) -> None:
         """
@@ -230,6 +231,32 @@ class Stats(object):
 
         return self._languages
 
+    
+    def streak(self):
+        """
+        :return: Streak length
+        """
+        if self._streak is not None:
+            return self._streak
+
+        self._streak = 0
+        last_timestamp = None
+
+        response = self.queries.query("/users/" + self.username + "/heatmap")
+
+        for day in response:
+            if last_timestamp is not None:
+                if day['timestamp'] - last_timestamp > 900:
+                    self._streak = 0
+            if day['contributions'] > 0:
+                self._streak += 1
+            else:
+                break
+
+            last_timestamp = day['timestamp']
+
+        return self._streak
+
 class Generate(object):
     """
     Class for generating images from data generated in stats
@@ -244,6 +271,9 @@ class Generate(object):
         
         if not os.path.isdir("generated"):
             os.mkdir("generated")
+
+        if not os.path.isdir("generated/" + self.stats.username):
+            os.mkdir("generated/" + self.stats.username)
 
     def generate_overview(self) -> None:
         """
@@ -266,7 +296,7 @@ class Generate(object):
         output = re.sub("{{ repos }}", f"{repos_len:,}", output)"""
 
         self.generate_output_folder()
-        with open("generated/overview.svg", "w") as f:
+        with open("generated/" + self.stats.username + "/overview.svg", "w") as f:
             f.write(output)
 
 
@@ -317,7 +347,7 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
         output = re.sub(r"{{ lang_list }}", lang_list, output)
 
         self.generate_output_folder()
-        with open("generated/languages.svg", "w") as f:
+        with open("generated/" + self.stats.username  "/languages.svg", "w") as f:
             f.write(output)
 
 ###############################################################################
