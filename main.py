@@ -99,6 +99,7 @@ class Stats(object):
         self.forks()
         self.contributions()
         self.languages()
+        self.streak()
 
         print_data = [
             ["User:", self._name],
@@ -108,6 +109,7 @@ class Stats(object):
             ["Lines changed:", self._lines_changed],
             ["Contributions:", self._total_contributions],
             ["Languages:", self._languages]
+            ["Streak:", self._streak]
         ]
 
         max_len = max(len(row[0]) for row in print_data)
