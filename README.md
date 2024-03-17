@@ -6,11 +6,11 @@
 [![Issues](https://img.shields.io/gitea/issues/open/Tuxilio/forgejo-stats?gitea_url=https%3A%2F%2Fcodeberg.org%2F)](https://codeberg.org/Tuxilio/forgejo-stats/issues)
 
 <a href="https://codeberg.org/Tuxilio/forgejo-stats">
-<img src="generated/tuxilio/overview.svg#gh-dark-mode-only"/>
-<img src="generated/tuxilio/languages.svg#gh-dark-mode-only"/>
+<img src="generated/overview.svg#gh-dark-mode-only"/>
+<img src="generated/languages.svg#gh-dark-mode-only"/>
 <br>
-<img src="generated/tuxilio/overview.svg#gh-light-mode-only"/>
-<img src="generated/tuxilio/languages.svg#gh-light-mode-only"/>
+<img src="generated/overview.svg#gh-light-mode-only"/>
+<img src="generated/languages.svg#gh-light-mode-only"/>
 </a>
 
 Generate visualizations of Forgejo / Gitea user and repository statistics with Python - e.g. using Forgejo / Gitea Actions. Visualizations can include data for private repositories.
