@@ -37,11 +37,17 @@ Since the project runs on Forgejo / Gitea Actions, no server is required to regu
 
 #### Using Woodpecker CI
 
-1. Create a personal access token using the instructions [here](https://docs.codeberg.org/advanced/access-token/). Personal access token must have permissions: `Read - repository` and `Read - user`. Copy the access token when it is generated – if you lose it, you will have to
-   regenerate the token.
-2. Create a copy of this repository.
-3. You have to request an account for woodpecker here.
-<!-- TODO: Add explaination -->
+1. Create a personal access token using the instructions [here](https://docs.codeberg.org/advanced/access-token/). Personal access token must have permissions: `Read - repository` and `Read - user`. Copy the access token when it is generated – if you lose it, you will have to regenerate the token.
+2. Create a second personal access token with the permission `Read & write - repository`
+3. Create a copy of this repository.
+4. If you use Codeberg, you'll have to request an account for woodpecker [here](https://docs.codeberg.org/ci/).
+5. Add the following secrets:
+	- `git_url` - e.g. `https://codeberg.org`
+	- `user` - e.g. `Tuxilio`
+	- `access_token` - Your access token generated in step 1
+	- `commit_token` - Your access token generated in step 2
+The tokens need the events `Cron` and if you want to run it manual `Manual`
+6. Set up a cron job: e.g `@daily`
    <!--
 2. Create a copy of this repository by clicking
    [here](https://github.com/jstrieb/github-stats/generate). Note: this is
