@@ -361,24 +361,26 @@ def main() -> None:
     """
     
     access_token = os.getenv("ACCESS_TOKEN")
-    user = os.getenv("USER")
+    #user = os.getenv("USER")
     git_url = os.getenv("GIT_URL")
 
     with open("users.json", "r") as f:
         user_data = json.load(f)
         users = user_data['users']
 
-    if access_token is None or user is None:
-        raise RuntimeError(
-            "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
-        )
+    for user in users:
+        print("Genearting stats for user " + user)
+        if access_token is None or user is None:
+            raise RuntimeError(
+                "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
+            )
 
-    stats = Stats(user, access_token, git_url)
-    stats.get_stats()
+        stats = Stats(user, access_token, git_url)
+        stats.get_stats()
 
-    generate = Generate(stats)
-    generate.generate_overview()
-    generate.generate_languages()
+        generate = Generate(stats)
+        generate.generate_overview()
+        generate.generate_languages()
 
 if __name__ == "__main__":
     main()
