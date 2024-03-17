@@ -24,9 +24,9 @@ steps:
     commands:
       - apk add git
       - git config --global user.name "[CI] Stats generator"
-      - git config --global user.email ${USER}"@noreply.codeberg.org"
+      - git config --global user.email "${USER}@noreply.codeberg.org"
       - git remote remove origin
-      - git remote add origin "https://"${COMMIT_TOKEN}"@codeberg.org/"${USER}"/forgejo-stats.git"
+      - git remote add origin "https://"${COMMIT_TOKEN}"@codeberg.org/${USER}/forgejo-stats.git"
       - git add .
       - git commit -m "[CI] Update stats ($( env TZ=Europe/Berlin date +"%d.%m.%Y %H:%M" )) [SKIP CI]"
       - git push --set-upstream origin main
