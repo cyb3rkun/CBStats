@@ -35,8 +35,12 @@ Since the project runs on Forgejo / Gitea Actions, no server is required to regu
 ### Using the CI
 <!-- TODO: Add details and screenshots -->
 
+#### Using Woodpecker CI
+
 1. Create a personal access token using the instructions [here](https://docs.codeberg.org/advanced/access-token/). Personal access token must have permissions: `Read - repository` and `Read - user`. Copy the access token when it is generated – if you lose it, you will have to
    regenerate the token.
+2. Create a copy of this repository.
+3. You have to request an account for woodpecker here.
 <!-- TODO: Add explaination -->
    <!--
 2. Create a copy of this repository by clicking
