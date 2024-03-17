@@ -377,5 +377,5 @@ def main(user) -> None:
     generate.generate_languages()
 
 if __name__ == "__main__":
-    main("Tuxilio")
+    #main("Tuxilio")
     main("Pinguin")
