@@ -108,7 +108,7 @@ class Stats(object):
             ["Forks:", self._forks],
             ["Lines changed:", self._lines_changed],
             ["Contributions:", self._total_contributions],
-            ["Languages:", self._languages]
+            ["Languages:", self._languages],
             ["Streak:", self._streak]
         ]
 
