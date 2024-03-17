@@ -347,7 +347,7 @@ fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8z"></path></svg>
         output = re.sub(r"{{ lang_list }}", lang_list, output)
 
         self.generate_output_folder()
-        with open("generated/" + self.stats.username  "/languages.svg", "w") as f:
+        with open("generated/" + self.stats.username + "/languages.svg", "w") as f:
             f.write(output)
 
 ###############################################################################
