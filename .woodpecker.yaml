@@ -17,7 +17,7 @@ steps:
       - python main.py
   - name: Commit to the repo
     image: alpine
-    secrets: [ commit_token ]
+    secrets: [ commit_token, user ]
     when:
       - event: manual
       - event: cron
