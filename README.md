@@ -5,6 +5,8 @@
 [![Stars](https://img.shields.io/gitea/stars/Tuxilio/forgejo-stats?gitea_url=https%3A%2F%2Fcodeberg.org%2F)](https://codeberg.org/Tuxilio/forgejo-stats/stars)
 [![Issues](https://img.shields.io/gitea/issues/open/Tuxilio/forgejo-stats?gitea_url=https%3A%2F%2Fcodeberg.org%2F)](https://codeberg.org/Tuxilio/forgejo-stats/issues)
 
+[⇣ use this ⇣](#using-woodpecker-ci)
+
 <a href="https://codeberg.org/Tuxilio/forgejo-stats">
 <img src="generated/overview.svg#gh-dark-mode-only"/>
 <img src="generated/languages.svg#gh-dark-mode-only"/>
