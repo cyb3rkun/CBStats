@@ -39,68 +39,37 @@ Since the project runs on Forgejo / Gitea Actions, no server is required to regu
 
 1. Create a personal access token using the instructions [here](https://docs.codeberg.org/advanced/access-token/). Personal access token must have permissions: `Read - repository` and `Read - user`. Copy the access token when it is generated – if you lose it, you will have to regenerate the token.
 2. Create a second personal access token with the permission `Read & write - repository`
-3. Create a copy of this repository.
-4. If you use Codeberg, you'll have to request an account for woodpecker [here](https://docs.codeberg.org/ci/).
-5. Add the following secrets:
+3. Create a copy of this repository: Go to the [New repo](https://codeberg.org/repo/create/) site and select the template `Tuxilio/forgejo-stats`. Choose `Git content (Defalt branch)`. Note: this is **not** the same as forking a copy because it copies everything fresh without the huge commit history. 
+4. If you use Codeberg, you'll have to request an account for Woodpecker CI [here](https://docs.codeberg.org/ci/).
+5. Go to the CI page and select the repository. Go to settings (the gear on the top right corner) and select `Secrets`.
+6. Add the following secrets:
 	- `git_url` - e.g. `https://codeberg.org`
 	- `user` - e.g. `Tuxilio`
 	- `access_token` - Your access token generated in step 1
 	- `commit_token` - Your access token generated in step 2
 The tokens need the events `Cron` and if you want to run it manual `Manual`
-6. Set up a cron job: e.g `@daily`
-   <!--
-2. Create a copy of this repository by clicking
-   [here](https://github.com/jstrieb/github-stats/generate). Note: this is
-   **not** the same as forking a copy because it copies everything fresh,
-   without the huge commit history. 
-3. Go to the "Secrets" page of your copy of the repository. If this is the
-   README of your copy, click [this link](../../settings/secrets/actions) to go
-   to the "Secrets" page. Otherwise, go to the "Settings" tab of the
-   newly-created repository and go to the "Secrets" page (bottom left).
-4. Create a new secret with the name `ACCESS_TOKEN` and paste the copied
-   personal access token as the value.
-5. It is possible to change the type of statistics reported by adding other
-   repository secrets. 
-   - To ignore certain repos, add them (in owner/name format e.g.,
-     `jstrieb/github-stats`) separated by commas to a new secret—created as
-     before—called `EXCLUDED`.
-   - To ignore certain languages, add them (separated by commas) to a new
-     secret called `EXCLUDED_LANGS`. For example, to exclude HTML and TeX you
-     could set the value to `html,tex`.
-   - To show statistics only for "owned" repositories and not forks with
-     contributions, add an environment variable (under the `env` header in the
-     [main
-     workflow](https://github.com/jstrieb/github-stats/blob/master/.github/workflows/main.yml))
-     called `EXCLUDE_FORKED_REPOS` with a value of `true`.
-   - These other values are added as secrets by default to prevent leaking
-     information about private repositories. If you're not worried about that,
-     you can change the values directly [in the Actions workflow
-     itself](https://github.com/jstrieb/github-stats/blob/05de1314b870febd44d19ad2f55d5e59d83f5857/.github/workflows/main.yml#L48-L53).
-6. Go to the [Actions
-   Page](../../actions?query=workflow%3A"Generate+Stats+Images") and press "Run
-   Workflow" on the right side of the screen to generate images for the first
-   time. 
-   - The images will be automatically regenerated every 24 hours, but they can
-     be regenerated manually by running the workflow this way.
-7. Take a look at the images that have been created in the
-   [`generated`](generated) folder.
-8. To add your statistics to your GitHub Profile README, copy and paste the
-   following lines of code into your markdown content. Change the `username`
-   value to your GitHub username.
+6. Go to the repository page inside the CI and press "Run pipeline" on the top right corner to generate images for the first
+   time.
+     - We'll set up a cron job so the images will be automatically regenerated every 24 hours, but they can be regenerated manually by running the workflow this way.
+7. Take a look at the images that have been created in the [`generated`](generated) folder. If all looks right, you're nearly done!
+8. Set up a cron job: e.g `@daily` to run the workflow each day at midnight.
+9. To add your statistics to your Profile README, copy and paste the following lines of code into your markdown content. Change the `username` value to your Forgejo / Gitea username.
    ```md
-   ![](https://raw.githubusercontent.com/username/github-stats/master/generated/overview.svg#gh-dark-mode-only)
-   ![](https://raw.githubusercontent.com/username/github-stats/master/generated/overview.svg#gh-light-mode-only)
+   <div align="center">
+      <a href="https://codeberg.org/username/forgejo-stats">
+      <img src="https://codeberg.org/username/forgejo-stats/media/branch/main/generated/overview.svg"/>
+      <img src="https://codeberg.org/username/forgejo-stats/media/branch/main/generated/languages.svg"/>
+      </a>
+   </div>
    ```
-   ```md
-   ![](https://raw.githubusercontent.com/username/github-stats/master/generated/languages.svg#gh-dark-mode-only)
-   ![](https://raw.githubusercontent.com/username/github-stats/master/generated/languages.svg#gh-light-mode-only)
-   ```
-   -->
-9. Link back to this repository so that others can generate their own
-   statistics images.
 10. Star this repo if you like it!
 
+You're done! 🎉
+
+If something has gone wrong, check everything again carefully. If it still doesn't work, please [open an issue](https://codeberg.org/Tuxilio/forgejo-stats/issues).
+
 ### Running yourself
+
 First, install requests:
 
      pip install requirements.txt
@@ -123,6 +92,3 @@ These things motivate me to to keep sharing what I build, and they provide valid
 - Inspired by [GitHub stats](https://github.com/jstrieb/github-stats) by [Jacob Strieb](https://github.com/jstrieb)
 - Inspired by a desire to improve upon [anuraghazra/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
 - Makes use of [GitHub Octicons](https://primer.style/octicons/)
-
-> **Info** Wondering why there are so few commits?<br>
-I first migrated Jacob Strie's project from GitHub to fork it and have it as a base but then the commit history was such large - so I deleted the repo and uploaded just the files to have an empty commit history.
