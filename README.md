@@ -89,6 +89,6 @@ These things motivate me to to keep sharing what I build, and they provide valid
 
 # Related Projects
 
-- Inspired by [GitHub stats](https://github.com/jstrieb/github-stats) by [Jacob Strieb](https://github.com/jstrieb)
+- Using [GitHub stats](https://github.com/jstrieb/github-stats) by [Jacob Strieb](https://github.com/jstrieb) as a base
 - Inspired by a desire to improve upon [anuraghazra/github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
 - Makes use of [GitHub Octicons](https://primer.style/octicons/)
