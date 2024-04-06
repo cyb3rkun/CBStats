@@ -39,7 +39,7 @@ Since the project runs on Forgejo / Gitea Actions, no server is required to regu
 
 1. Create a personal access token using the instructions [here](https://docs.codeberg.org/advanced/access-token/). Personal access token must have permissions: `Read - repository` and `Read - user`. Copy the access token when it is generated – if you lose it, you will have to regenerate the token.
 2. Create a second personal access token with the permission `Read & write - repository`
-3. Create a copy of this repository: Go to the [New repo](https://codeberg.org/repo/create/) site and select the template `Tuxilio/forgejo-stats`. Choose `Git content (Defalt branch)`. Note: this is **not** the same as forking a copy because it copies everything fresh without the huge commit history. 
+3. Create a copy of this repository: Use this template by clinking [this link](https://codeberg.org/repo/create?template_id=198501). Choose `Git content (Defalt branch)`. This will create a new copy of this repo. Note: this is **not** the same as forking a copy because it copies everything fresh without the huge commit history. 
 4. If you use Codeberg, you'll have to request an account for Woodpecker CI [here](https://docs.codeberg.org/ci/).
 5. Go to the CI page and select the repository. Go to settings (the gear on the top right corner) and select `Secrets`.
 6. Add the following secrets:
