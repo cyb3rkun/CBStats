@@ -19,6 +19,8 @@ Generate visualizations of Forgejo / Gitea user and repository statistics with P
 
 You can choose between light and dark mode.
 
+[Codeberg](https://codeberg.org/Tuxilio/forgejo-stats) · [repo.or.cz (mirror)](https://repo.or.cz/forgejo-stats.git) · [NotABug.org (mirror)](https://notabug.org/Tuxilio/forgejo-stats)
+
 ## Background
 
 When someone views a profile, it is often because they are curious about a user's open source projects and contributions. Unfortunately, that user's stars, forks, and pinned repositories do not necessarily reflect the contributions they make.
