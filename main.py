@@ -155,7 +155,7 @@ class Stats(object):
         response =  self.queries.query("/users/" + self.username + "/repos")
 
         for repo in response:
-            if not repo.private:
+            if not repo['private']:
                 self._repo_list.append(repo['name'])
 
         return self.repo_list
