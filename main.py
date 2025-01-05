@@ -59,7 +59,7 @@ class Queries(object):
         response = requests.get(generated_query, headers=headers)
 
         if response.status_code != 200:
-            print("Error while making the request. Status code:", response.status_code)
+            print("Error while making the request. Status code:", response.status_code, "/nQuery:", query)
             sys.exit(1)
 
         return response.json()
