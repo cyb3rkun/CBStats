@@ -3,9 +3,12 @@ steps:
     image: python
     secrets: [ access_token, user, git_url ]
     environment:
-      ACCESS_TOKEN=${ACCESS_TOKEN}
-      USER=${USER}
-      GIT_URL=${GIT_URL}
+      ACCESS_TOKEN:
+        from_secret: ACCESS_TOKEN
+      USER:
+        from_secret: USER
+      GIT_URL:
+        from_secret: GIT_URL
     when:
       - event: manual
       - event: cron
@@ -17,7 +20,11 @@ steps:
       - python main.py
   - name: Commit to the repo
     image: alpine
-    secrets: [ commit_token, user ]
+    environment:
+      COMMIT_TOKEN:
+        from_secret: commit_token
+      USER:
+        from_secret: USER
     when:
       - event: manual
       - event: cron
