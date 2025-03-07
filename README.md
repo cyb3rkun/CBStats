@@ -33,7 +33,7 @@ This project is still under development, but it's a good start. It is already po
 
 This project uses [GitHub stats](https://github.com/jstrieb/github-stats) by [Jacob Strieb](https://github.com/jstrieb) (licensed under GPL 3.0 or later) as base and uses the [Language Colors](https://github.com/ozh/github-colors) by [OZH](https://github.com/ozh) (licensed under WTFPL) for the language color visualizations.
 
-Since the project runs on Forgejo / Gitea Actions, no server is required to regularly regenerate the images with updated statistics. Likewise, since the user runs the analysis code themselves via Forgejo / Gitea Actions, they can use their access token to collect statistics on private repositories that an external service would be unable to access.
+Since the project runs on Woodpecker CI (Forgejo / Gitea Actions will come), no other server is required to regularly regenerate the images with updated statistics. Likewise, since the user runs the analysis code themselves via ~~Forgejo / Gitea Actions~~ Woodpecker CI, they can use their access token to collect statistics on private repositories that an external service would be unable to access.
 
 ## Installation
 ### Using the CI
