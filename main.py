@@ -59,13 +59,12 @@ class Queries(object):
         response = requests.get(generated_query, headers=headers)
 
         if response.status_code != 200:
-            if response.status_code == 409:
-                print("Warning: Request failed with status code 409, /nQuery:", query)
-                print("This may be becuase code is disabled for a repo, but could also be a bug.")
-                return {}
-            else:
-                print("Error while making the request. Status code:", response.status_code, "/nQuery:", query)
-                sys.exit(1)
+            print("Error while making the request. Status code:", response.status_code, "Query:", query)
+
+            if response.status_code == 404:
+                print("Maybe code is disabled on the repo, than this may be just normal :)")
+
+            return {}
 
         return response.json()
 
@@ -378,9 +377,9 @@ def main() -> None:
     git_url = os.getenv("GIT_URL")
 
     print("Generating stats for user " + user)
-    if access_token is None or user is None:
+    if access_token is None or user is None or git_url is None:
         raise RuntimeError(
-            "ACCESS_TOKEN and USERNAME environment variables cannot be None!"
+            "ACCESS_TOKEN, USER and GIT_URL environment variables cannot be None!"
         )
 
     stats = Stats(user, access_token, git_url)
