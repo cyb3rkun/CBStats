@@ -59,7 +59,7 @@ class Queries(object):
         response = requests.get(generated_query, headers=headers)
 
         if response.status_code != 200:
-            if respone.status_code == 409:
+            if response.status_code == 409:
                 print("Warning: Request failed with status code 409, /nQuery:", query)
                 print("This may be becuase code is disabled for a repo, but could also be a bug.")
                 return {}
